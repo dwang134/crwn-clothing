@@ -1,11 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Item} from '../types/Types'
 
-function App() {
+const App: React.FC = () =>  {
+
+  const categories:Item []= [
+    {
+      id: 1,
+      title: "Hats",
+    },
+    {
+      id: 2,
+      title: "Jackets",
+    },
+    {
+      id: 3,
+      title: "Sneakers",
+    },
+    {
+      id: 4,
+      title: "Mens",
+    },
+    {
+      id: 5,
+      title: "Womens",
+    },
+
+  ];
+
   return (
-    <div className="App">
-    <h1>Hello World</h1> 
+    <div className="categories-contianer">
+      {categories.map((category, index)=> (
+        <div key= {category.id} className="category-container">
+          <div className="background-image"></div>
+          <div className="category-body">
+            <h2>{category.title}</h2>
+            <p>Shop now</p>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
