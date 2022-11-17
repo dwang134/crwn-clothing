@@ -1,0 +1,7 @@
+@use '../../styles/bundle' as b;
+
+.directory-container {
+    width: 100%;
+    @include b.flexbox(row, space-between);
+    flex-wrap: wrap;
+  }
