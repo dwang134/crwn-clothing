@@ -1,0 +1,11 @@
+@use './styles/bundle' as b;
+
+.App {
+  text-align: center;
+}
+
+.categories-container {
+  width: 100%;
+  @include b.flexbox(row, space-between);
+  flex-wrap: wrap;
+}
