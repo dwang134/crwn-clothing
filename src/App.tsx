@@ -29,11 +29,11 @@ const App: React.FC = () =>  {
   ];
 
   return (
-    <div className="categories-contianer">
+    <div className="categories-container">
       {categories.map((category, index)=> (
         <div key= {category.id} className="category-container">
           <div className="background-image"></div>
-          <div className="category-body">
+          <div className="category-body-container">
             <h2>{category.title}</h2>
             <p>Shop now</p>
           </div>
