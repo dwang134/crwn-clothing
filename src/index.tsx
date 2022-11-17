@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import Shop from './routes/shop/Shop'
+import Shop from './routes/Shop'
+import Navbar from './components/navbar/Navbar'
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import {
@@ -15,17 +16,33 @@ const root = ReactDOM.createRoot(
 );
 
 const router = createBrowserRouter([
+  // {
+  //   path: "/home",
+  //   element: <App/>,
+  //   // errorElement: <ErrorPage />,
+  //   children: [
+  //     {
+  //       path: "shop",
+  //       element: <Shop/>,
+  //     }
+  //   ]
+  // },
   {
-    path: "/home",
-    element: <App/>,
+    path: "/",
+    element: <Navbar/>,
     // errorElement: <ErrorPage />,
     children: [
+      {
+        path: "home",
+        element: <App/>,
+      },
       {
         path: "shop",
         element: <Shop/>,
       }
     ]
   },
+
 ]);
 
 
