@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import Shop from './routes/shop/Shop'
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import {
@@ -15,10 +16,18 @@ const root = ReactDOM.createRoot(
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/home",
     element: <App/>,
+    // errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "shop",
+        element: <Shop/>,
+      }
+    ]
   },
 ]);
+
 
 root.render(
   <React.StrictMode>

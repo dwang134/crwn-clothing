@@ -2,6 +2,7 @@ import React from 'react';
 // import './App.scss';
 import {Item} from '../../../types/Types'
 import Directory from '../../components/directory/Directory'
+import {Outlet} from 'react-router-dom';
 
 const Homepage: React.FC = () =>  {
 
@@ -35,7 +36,10 @@ const Homepage: React.FC = () =>  {
   
 
   return (
+    <>
+    <Outlet/>
     <Directory categories= {categories}/>
+    </>
   );
 }
 
