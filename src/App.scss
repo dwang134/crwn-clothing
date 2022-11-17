@@ -9,3 +9,12 @@
   @include b.flexbox(row, space-between);
   flex-wrap: wrap;
 }
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+*{
+  box-sizing: border-box;
+}
