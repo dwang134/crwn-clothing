@@ -1,12 +1,12 @@
-import {signInWithGooglePopup } from '../utils/firebase'
+import {signInWithGooglePopup, createUserDocumentFromAuth} from '../utils/firebase'
 
 const SignIn:React.FC = () => {
 
 
     //whenver you make a call to a database its always going to be asynchronous
     const logGoogleUser = async () => {
-        const response = await signInWithGooglePopup();
-        console.log(response);
+        const {user} = await signInWithGooglePopup();
+        createUserDocumentFromAuth(user);
     }
 
     return (
