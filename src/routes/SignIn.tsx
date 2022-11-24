@@ -6,7 +6,7 @@ const SignIn:React.FC = () => {
     //whenver you make a call to a database its always going to be asynchronous
     const logGoogleUser = async () => {
         const {user} = await signInWithGooglePopup();
-        createUserDocumentFromAuth(user);
+        const userDoc = await createUserDocumentFromAuth(user);
     }
 
     return (
