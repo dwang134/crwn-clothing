@@ -1,11 +1,12 @@
 import React,{useState} from 'react'
 import {Field} from '../../../types/Types'
+import {createAuthUserFromEmailPassword} from '../../utils/firebase'
 
 const defaultFields:Field = {
   name: '',
   email: '',
   password: '',
-  confirmPassword: ''
+  confirmPassword: '',
 }
 
 
@@ -20,10 +21,22 @@ const Signup:React.FC = () => {
     setFields({...fields, [name]: value});
   }
 
+  const handleSubmit = async(event: React.SyntheticEvent) => {
+    event.preventDefault();
+    // const {name, email, password, confirmPassword} = event.target;
+    //check if password matches current
+    // if (password != confirmPassword){
+    //   alert('passwords entered does not match, please make sure both passwords are the same!');
+    // }else{
+    //   const userDoc = await createAuthUserFromEmailPassword(email, password);
+    //   console.log(userDoc);
+    // }
+  }
+
   return (
     <div>
       <h1>Sign up with your email/password</h1>
-      <form onSubmit= {(e)=> e.preventDefault()}>
+      <form onSubmit= {(e)=> handleSubmit(e)}>
         <label>Display Name</label>
         <input type= 'text' required onChange={(e)=> handleChange(e)} name="name" value={fields.name}/>
     
