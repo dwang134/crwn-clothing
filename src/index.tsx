@@ -11,6 +11,7 @@ import {
   Route,
 } from "react-router-dom";
 import Login from './routes/Login';
+import {UserProvider} from './contexts/user'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -42,7 +43,9 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
+    <UserProvider>
     <RouterProvider router={router}/>
+    </UserProvider>
   </React.StrictMode>
 );
 
