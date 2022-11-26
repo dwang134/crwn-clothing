@@ -10,7 +10,7 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import SignIn from './routes/SignIn';
+import Login from './routes/Login';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -31,8 +31,8 @@ const router = createBrowserRouter([
         element: <Shop/>,
       },
       {
-        path: "signin",
-        element: <SignIn/>
+        path: "login",
+        element: <Login/>
       }
     ]
   },

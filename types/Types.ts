@@ -5,7 +5,7 @@ export type Item = {
 }
 
 export type Field = {
-    name: string,
+    displayName: string,
     email: string,
     password: string,
     confirmPassword: string
