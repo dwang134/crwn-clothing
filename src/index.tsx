@@ -10,6 +10,7 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
+import Login from './routes/Login';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "shop",
         element: <Shop/>,
+      },
+      {
+        path: "login",
+        element: <Login/>
       }
     ]
   },
