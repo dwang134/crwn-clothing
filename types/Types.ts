@@ -3,3 +3,10 @@ export type Item = {
     title: string,
     imageUrl: string
 }
+
+export type Field = {
+    name: string,
+    email: string,
+    password: string,
+    confirmPassword: string
+}
