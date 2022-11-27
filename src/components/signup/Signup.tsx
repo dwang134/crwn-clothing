@@ -1,9 +1,8 @@
-import React, {useState, useContext} from 'react'
+import React,{useState} from 'react'
 import {Field} from '../../../types/Types'
 import {createAuthUserFromEmailPassword, createUserDocumentFromAuth} from '../../utils/firebase'
 import Button from '../button/Button'
 import FormInput from '../input/FormInput'
-import {UserContext} from '../../contexts/user'
 
 const defaultFields:Field = {
   displayName: '',
@@ -20,7 +19,7 @@ const Signup:React.FC = () => {
   //doing it this way allows you to not create a state for each target values
   const {displayName, email, password, confirmPassword} = fields;
 
-  const {setCurrentUser} = useContext(UserContext);
+  console.log(fields);
 
     const resetFormFields = () => {
       setFields(defaultFields);
@@ -37,9 +36,7 @@ const Signup:React.FC = () => {
         //create user doc
         try{
           const res = await createAuthUserFromEmailPassword(email, password);
-
           if (res){
-            setCurrentUser(res.user);
             await createUserDocumentFromAuth(res.user, {displayName});
           }
           resetFormFields();
