@@ -10,8 +10,7 @@ const Navbar:React.FC = () => {
   const {currentUser, setCurrentUser} = useContext(UserContext);
 
   const handleSignout = async() => {
-    const res = await signOutUser();
-    console.log(res);
+    await signOutUser();
     setCurrentUser(null);
   }
 

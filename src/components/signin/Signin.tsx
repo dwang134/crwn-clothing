@@ -21,7 +21,7 @@ const Signin = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const {setCurrentUser} = useContext(UserContext);
+//   const {setCurrentUser} = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -39,7 +39,7 @@ const Signin = () => {
       const res = await signInAuthUserWithEmailAndPassword(email, password);
 
       if (res){
-        setCurrentUser(res.user);
+        // setCurrentUser(res.user);
         resetFormFields();
       }
     } catch (error) {
