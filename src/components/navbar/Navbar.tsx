@@ -7,13 +7,7 @@ import {signOutUser} from '../../utils/firebase'
 
 const Navbar:React.FC = () => {
 
-  const {currentUser, setCurrentUser} = useContext(UserContext);
-
-  const handleSignout = async() => {
-    await signOutUser();
-    setCurrentUser(null);
-  }
-
+  const {currentUser} = useContext(UserContext);
 
   return (
     <>
@@ -24,7 +18,7 @@ const Navbar:React.FC = () => {
         <div className="nav-links-container">
           <Link className= 'nav-link' to='/shop'>SHOP</Link>
           {currentUser ? (
-            <span className= 'nav-link' onClick= {()=> handleSignout()}>SIGN OUT</span>
+            <span className= 'nav-link' onClick= {()=> signOutUser()}>SIGN OUT</span>
           ): (
             <Link className= 'nav-link' to='/signin'>SIGN IN</Link>
           )}

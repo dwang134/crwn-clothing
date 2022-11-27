@@ -20,8 +20,6 @@ const Signup:React.FC = () => {
   //doing it this way allows you to not create a state for each target values
   const {displayName, email, password, confirmPassword} = fields;
 
-  const {setCurrentUser} = useContext(UserContext);
-
     const resetFormFields = () => {
       setFields(defaultFields);
     }
@@ -39,7 +37,6 @@ const Signup:React.FC = () => {
           const res = await createAuthUserFromEmailPassword(email, password);
 
           if (res){
-            setCurrentUser(res.user);
             await createUserDocumentFromAuth(res.user, {displayName});
           }
           resetFormFields();
