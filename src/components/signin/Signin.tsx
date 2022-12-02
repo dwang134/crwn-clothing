@@ -8,7 +8,7 @@ import {
   signInWithGooglePopup,
 } from '../../utils/firebase'
 
-import {UserContext} from '../../contexts/user'
+import {UserContext} from '../../contexts/userContext'
 
 import './Signin.scss';
 
@@ -27,8 +27,7 @@ const Signin = () => {
   };
 
   const signInWithGoogle = async () => {
-    const res= await signInWithGooglePopup();
-    // console.log(res);
+    await signInWithGooglePopup();
   };
 
   const handleSubmit = async (event: any) => {

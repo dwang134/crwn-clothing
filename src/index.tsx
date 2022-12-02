@@ -11,7 +11,8 @@ import {
   Route,
 } from "react-router-dom";
 import Login from './routes/Login';
-import {UserProvider} from './contexts/user'
+import {UserProvider} from './contexts/userContext'
+import { ProductProvider } from './contexts/productContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -29,11 +30,11 @@ const router = createBrowserRouter([
       },
       {
         path: "shop",
-        element: <Shop/>,
+        element: <ProductProvider><Shop/></ProductProvider>,
       },
       {
         path: "login",
-        element: <Login/>
+        element: <UserProvider><Login/></UserProvider>
       }
     ]
   },
@@ -43,9 +44,7 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <UserProvider>
     <RouterProvider router={router}/>
-    </UserProvider>
   </React.StrictMode>
 );
 

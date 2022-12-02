@@ -1,8 +1,18 @@
 import React from 'react'
+import {Product} from '../../types/Types'
+import { useProductContext } from '../contexts/productContext'
+ 
+const Shop:React.FC = () => {
 
-const Shop = () => {
+  const {products, setProducts} = useProductContext();
+
   return (
-    <h1>This issa shop</h1>
+    <div>{products.map((item:Product)=> (
+      <div key= {item.id}>
+        <h1>{item.name}</h1>
+      </div>  
+    ))}
+  </div>
   )
 }
 
