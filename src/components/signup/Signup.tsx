@@ -1,9 +1,8 @@
-import React, {useState, useContext} from 'react'
+import React,{useState} from 'react'
 import {Field} from '../../../types/Types'
 import {createAuthUserFromEmailPassword, createUserDocumentFromAuth} from '../../utils/firebase'
 import Button from '../button/Button'
 import FormInput from '../input/FormInput'
-import {UserContext} from '../../contexts/user'
 
 const defaultFields:Field = {
   displayName: '',
@@ -35,7 +34,6 @@ const Signup:React.FC = () => {
         //create user doc
         try{
           const res = await createAuthUserFromEmailPassword(email, password);
-
           if (res){
             await createUserDocumentFromAuth(res.user, {displayName});
           }

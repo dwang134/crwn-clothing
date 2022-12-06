@@ -1,9 +1,6 @@
 import {Outlet, Link} from 'react-router-dom';
 import {ReactComponent as CrwnLogo} from '../../assets/crown.svg'
 import './Navbar.scss'
-import {useContext} from 'react';
-import {UserContext} from '../../contexts/user'
-import {signOutUser} from '../../utils/firebase'
 
 const Navbar:React.FC = () => {
 
