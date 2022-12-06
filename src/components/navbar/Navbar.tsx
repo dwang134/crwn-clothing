@@ -3,6 +3,9 @@ import {ReactComponent as CrwnLogo} from '../../assets/crown.svg'
 import './Navbar.scss'
 
 const Navbar:React.FC = () => {
+
+  const {currentUser} = useContext(UserContext);
+
   return (
     <>
       <div className="navigation">
@@ -11,7 +14,11 @@ const Navbar:React.FC = () => {
         </Link>
         <div className="nav-links-container">
           <Link className= 'nav-link' to='/shop'>SHOP</Link>
-          <Link className= 'nav-link' to='/signin'>SIGN IN</Link>
+          {currentUser ? (
+            <span className= 'nav-link' onClick= {()=> signOutUser()}>SIGN OUT</span>
+          ): (
+            <Link className= 'nav-link' to='/signin'>SIGN IN</Link>
+          )}
         </div>
       </div>
       <Outlet/>

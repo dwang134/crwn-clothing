@@ -19,8 +19,6 @@ const Signup:React.FC = () => {
   //doing it this way allows you to not create a state for each target values
   const {displayName, email, password, confirmPassword} = fields;
 
-  console.log(fields);
-
     const resetFormFields = () => {
       setFields(defaultFields);
     }
