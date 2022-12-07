@@ -1,7 +1,7 @@
 
 import { Product } from '../../../types/Types';
 import ProductCard from '../productCard/ProductCard';
-import './CategoryPreview.scss';
+import './productCategory.scss';
 
 interface Props{
     title: string;

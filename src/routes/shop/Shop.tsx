@@ -1,21 +1,20 @@
 import React from 'react'
 import {Product} from '../../../types/Types'
-import CategoryPreview from '../../components/category-preview/CategoryPreview';
-import ProductCard from '../../components/productCard/ProductCard';
 import { useCategoryContext } from '../../contexts/categoryContext'
-import './Shop.scss'
+import './Shop.scss';
+import { Routes, Route } from 'react-router-dom';
+import ProductCategory from '../../components/productCategory/productCategory';
+import CategoryPreview from '../categories-preview/CategoryPreview';
  
 const Shop:React.FC = () => {
 
   const {categoriesMap} = useCategoryContext();
 
   return (
-    <div className='shop-container'>
-    {Object.keys(categoriesMap).map((key) => {
-      const products = categoriesMap[key];
-      return <CategoryPreview key={key} title={key} products={products} />;
-    })}
-  </div>
+    <Routes>
+      <Route index element={<CategoryPreview />} />
+      {/* <Route path=':category' element={<ProductCategory />} /> */}
+    </Routes>
   );
 }
 
