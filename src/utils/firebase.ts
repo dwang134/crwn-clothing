@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, User as FirebaseUser, createUserWithEmailAndPassword,  signInWithEmailAndPassword,
 signOut, onAuthStateChanged} from 'firebase/auth';
-import {getFirestore, doc, getDoc, setDoc} from 'firebase/firestore'
+import {getFirestore, doc, getDoc, setDoc, collection, writeBatch}  from 'firebase/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -34,6 +34,14 @@ export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider)
 
 //we can use this db instance to access the database
 export const db = getFirestore();
+
+//add collection
+export const addCollectionAndDocuments = async (collectionKey: string, objectsToAdd: any) => {
+    //create collection
+    const collectionRef = collection(db, collectionKey);
+    
+
+}
 
 //async function that receives user auth object and store the data inside of firestore
 export const createUserDocumentFromAuth = async (userAuth: FirebaseUser, additionalInfo= {}) => {

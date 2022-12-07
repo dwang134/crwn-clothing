@@ -1,5 +1,5 @@
 import {createContext, useContext, useState} from 'react';
-import SHOP_DATA from '../data/shop-data.json'
+import SHOP_DATA from '../data/shop-data'
 import {Product} from '../../types/Types'
 
 //set types
@@ -25,7 +25,7 @@ export const useProductContext = () => {
 
 export const ProductProvider:React.FC<Props> = ({children}) => {
 
-    const [products, setProducts] = useState<Product []>(SHOP_DATA);
+    const [products, setProducts] = useState<Product []>([]);
 
     const productContextObject: ProductContextObject = {
         products,
