@@ -1,6 +1,6 @@
 
-import Signin from "../components/signin/Signin";
-import Signup from "../components/signup/Signup";
+import Signin from "../../components/signin/Signin";
+import Signup from "../../components/signup/Signup";
 import "./Login.scss";
 
 const Login = () => {
