@@ -37,7 +37,7 @@ const Homepage: React.FC = () =>  {
 
   return (
     <>
-    <Outlet/>
+    {/* <Outlet/> */}
     <Directory categories= {categories}/>
     </>
   );

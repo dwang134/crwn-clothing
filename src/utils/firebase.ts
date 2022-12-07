@@ -78,7 +78,7 @@ export const createAuthUserFromEmailPassword = async(email:string, password:stri
 
     if(!email || !password) return;
 
-    //crate authenticated user and give us back some auth object 
+    //create authenticated user and give us back some auth object 
     return createUserWithEmailAndPassword(auth, email, password);
 }
 
@@ -90,5 +90,4 @@ export const signInAuthUserWithEmailAndPassword = async (email: string, password
 
 export const signOutUser = async () => await signOut(auth);
 
-export const onAuthStateChangedListener = (callback: any) =>
-onAuthStateChanged(auth, callback);
+export const onAuthStateChangedListener = (callback: any) => onAuthStateChanged(auth, callback);

@@ -11,6 +11,9 @@ import {
   Route,
 } from "react-router-dom";
 import Login from './routes/Login';
+import {UserProvider} from './contexts/userContext'
+import { ProductProvider } from './contexts/productContext';
+import { CartContextProvider } from './contexts/cartContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -19,7 +22,7 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navbar/>,
+    element: <CartContextProvider><Navbar/></CartContextProvider>,
     // errorElement: <ErrorPage />,
     children: [
       {
@@ -28,11 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: "shop",
-        element: <Shop/>,
+        element: <ProductProvider><Shop/></ProductProvider>,
       },
       {
         path: "login",
-        element: <Login/>
+        element: <UserProvider><Login/></UserProvider>
       }
     ]
   },
