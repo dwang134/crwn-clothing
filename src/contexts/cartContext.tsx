@@ -10,6 +10,8 @@ type CartContextObject = {
   addItemToCart: (productToAdd: Product) => void;
   removeItemFromCart: (productToRemove: Product) => void;
   removeItemFromCheckout: (productToRemove: Product) => void;
+  cartTotal: number;
+  setCartTotal: (productPrice: number) => void;
 };
 
 const CartContext = createContext<CartContextObject>({
@@ -20,7 +22,9 @@ const CartContext = createContext<CartContextObject>({
   cartItems: [],
   addItemToCart: () => {},
   removeItemFromCart: ()=> {},
-  removeItemFromCheckout: () => {}
+  removeItemFromCheckout: () => {},
+  cartTotal: 0,
+  setCartTotal: () => {}
 });
 
 interface Props {
@@ -35,13 +39,22 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [cartItems, setCartItems] = useState<CartItemType[]>([]);
+  const [cartTotal, setCartTotal] = useState(0);
 
   useEffect(() => {
     const newCartCount = cartItems.reduce(
-      (total, cartItem) => total + cartItem.quantity,
+      (carTotal, cartItem) => carTotal + cartItem.quantity,
       0
     );
     setCartCount(newCartCount);
+  }, [cartItems]);
+
+  useEffect(() => {
+    const newCartTotal = cartItems.reduce(
+      (carTotal, cartItem) => carTotal + cartItem.price,
+      0
+    );
+    setCartTotal(newCartTotal);
   }, [cartItems]);
 
   const addItemToCart = (productToAdd: Product) => {
@@ -96,7 +109,9 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
     cartItems,
     addItemToCart,
     removeItemFromCart,
-    removeItemFromCheckout
+    removeItemFromCheckout,
+    cartTotal,
+    setCartTotal
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

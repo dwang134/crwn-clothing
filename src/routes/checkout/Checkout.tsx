@@ -5,7 +5,7 @@ import { useCartContext } from "../../contexts/cartContext";
 import './Checkout.scss';
 
 const Checkout: React.FC = () => {
-  const { cartItems, cartCount, setCartCount, addItemToCart } = useCartContext();
+  const { cartItems, cartCount, setCartCount, addItemToCart,cartTotal, setCartTotal } = useCartContext();
 
   console.log(cartItems);
 
@@ -31,7 +31,7 @@ const Checkout: React.FC = () => {
       {cartItems.map((item: CartItemType) => (
         <CheckoutItem key={item.id} cartItem={item} />
       ))}
-      <div className='total' style={{fontSize: '2rem'}}>TOTAL: $0</div>
+      <span className='total'>TOTAL: ${cartTotal}</span>
     </div>
   );
 };
