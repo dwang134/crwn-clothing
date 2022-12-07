@@ -15,6 +15,7 @@ import {UserProvider} from './contexts/userContext'
 import { CategoryProvider } from './contexts/categoryContext';
 import { CartContextProvider } from './contexts/cartContext';
 import Checkout from './routes/checkout/Checkout';
+import Category from './routes/category/Category';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "shop",
         element: <CategoryProvider><Shop/></CategoryProvider>,
+      },
+      {
+        path: "shop/:category",
+        element: <Category/>,
       },
       {
         path: "login",

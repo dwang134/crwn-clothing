@@ -5,16 +5,21 @@ import './Shop.scss';
 import { Routes, Route } from 'react-router-dom';
 import ProductCategory from '../../components/productCategory/productCategory';
 import CategoryPreview from '../categories-preview/CategoryPreview';
+import Category from '../category/Category';
  
 const Shop:React.FC = () => {
 
   const {categoriesMap} = useCategoryContext();
 
   return (
-    <Routes>
-      <Route index element={<CategoryPreview />} />
-      {/* <Route path=':category' element={<ProductCategory />} /> */}
-    </Routes>
+    <>
+    {Object.keys(categoriesMap).map((title) => {
+      const products = categoriesMap[title];
+      return (
+        <ProductCategory key={title} title={title} products={products} />
+      );
+    })}
+  </>
   );
 }
 

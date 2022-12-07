@@ -2,16 +2,17 @@
 import { Product } from '../../../types/Types';
 import ProductCard from '../productCard/ProductCard';
 import './productCategory.scss';
+import {Link} from 'react-router-dom';
 
 interface Props{
     title: string;
     products: Product [];
 }
 
-const CategoryPreview:React.FC<Props> = ({ title, products }) => (
+const ProductCategory:React.FC<Props> = ({ title, products }) => (
   <div className='category-preview-container'>
     <h2>
-      <span className='title'>{title.toUpperCase()}</span>
+      <Link className='title' to = {`/shop/${title}`}>{title.toUpperCase()}</Link>
     </h2>
     <div className='preview'>
       {products
@@ -23,4 +24,4 @@ const CategoryPreview:React.FC<Props> = ({ title, products }) => (
   </div>
 );
 
-export default CategoryPreview;
+export default ProductCategory;
