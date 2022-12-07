@@ -26,3 +26,5 @@ export type ShopDataCollection = {
     title: string;
     item: Product [];
 }
+
+export type Categories = Product;
