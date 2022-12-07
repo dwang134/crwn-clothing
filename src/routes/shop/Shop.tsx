@@ -1,20 +1,26 @@
 import React from 'react'
 import {Product} from '../../../types/Types'
-import ProductCard from '../../components/productCard/ProductCard';
-import { useProductContext } from '../../contexts/productContext'
-import './Shop.scss'
+import { useCategoryContext } from '../../contexts/categoryContext'
+import './Shop.scss';
+import { Routes, Route } from 'react-router-dom';
+import ProductCategory from '../../components/productCategory/productCategory';
+import CategoryPreview from '../categories-preview/CategoryPreview';
+import Category from '../category/Category';
  
 const Shop:React.FC = () => {
 
-  const {products, setProducts} = useProductContext();
+  const {categoriesMap} = useCategoryContext();
 
   return (
-    <div className= 'products-container'>
-    {products.map((product:Product)=> (
-      <ProductCard key={product.id} product={product}/>
-    ))}
-  </div>
-  )
+    <>
+    {Object.keys(categoriesMap).map((title) => {
+      const products = categoriesMap[title];
+      return (
+        <ProductCategory key={title} title={title} products={products} />
+      );
+    })}
+  </>
+  );
 }
 
 export default Shop
