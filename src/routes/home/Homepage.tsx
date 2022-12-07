@@ -1,8 +1,7 @@
 import React from 'react';
 // import './App.scss';
-import {Item} from '../../types/Types'
-import Directory from '../components/directory/Directory'
-import {Outlet} from 'react-router-dom';
+import {Item} from '../../../types/Types'
+import Directory from '../../components/directory/Directory'
 
 const Homepage: React.FC = () =>  {
 

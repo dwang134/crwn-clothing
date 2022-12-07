@@ -1,7 +1,7 @@
 import React from 'react'
-import {Product} from '../../types/Types'
-import ProductCard from '../components/productCard/ProductCard';
-import { useProductContext } from '../contexts/productContext'
+import {Product} from '../../../types/Types'
+import ProductCard from '../../components/productCard/ProductCard';
+import { useProductContext } from '../../contexts/productContext'
 import './Shop.scss'
  
 const Shop:React.FC = () => {

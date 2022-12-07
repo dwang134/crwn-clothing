@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import Shop from './routes/Shop'
+import Shop from './routes/shop/Shop'
 import Navbar from './components/navbar/Navbar'
 import reportWebVitals from './reportWebVitals';
 import './index.css';
@@ -10,10 +10,11 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import Login from './routes/Login';
+import Login from './routes/login/Login';
 import {UserProvider} from './contexts/userContext'
 import { ProductProvider } from './contexts/productContext';
 import { CartContextProvider } from './contexts/cartContext';
+import Checkout from './routes/checkout/Checkout';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <UserProvider><Login/></UserProvider>
+      },
+      {
+        path: "checkout",
+        element: <Checkout/>
       }
     ]
   },

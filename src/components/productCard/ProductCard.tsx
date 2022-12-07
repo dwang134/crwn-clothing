@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { Product } from '../../../types/Types';
 import { useCartContext } from '../../contexts/cartContext';
 import Button from '../button/Button';
-
 import './ProductCard.scss';
 
 interface Props{

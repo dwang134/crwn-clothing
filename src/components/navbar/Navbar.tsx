@@ -24,7 +24,7 @@ const Navbar:React.FC = () => {
           {currentUser ? (
             <span className= 'nav-link' onClick= {()=> signOutUser()}>SIGN OUT</span>
           ): (
-            <Link className= 'nav-link' to='/signin'>SIGN IN</Link>
+            <Link className= 'nav-link' to='/login'>SIGN IN</Link>
           )}
         <CartIcon/>
         </div>
