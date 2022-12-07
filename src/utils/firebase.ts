@@ -3,6 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, User as FirebaseUser, createUserWithEmailAndPassword,  signInWithEmailAndPassword,
 signOut, onAuthStateChanged} from 'firebase/auth';
 import {getFirestore, doc, getDoc, setDoc, collection, writeBatch}  from 'firebase/firestore'
+import { ShopDataCollection } from '../../types/Types';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -37,10 +38,17 @@ export const db = getFirestore();
 
 //add collection
 export const addCollectionAndDocuments = async (collectionKey: string, objectsToAdd: any) => {
-    //create collection
-    const collectionRef = collection(db, collectionKey);
     
+    const collectionRef = collection(db, collectionKey);
+    const batch = writeBatch(db, )
 
+    objectsToAdd.forEach((object: ShopDataCollection)=> {
+        const docRef=  doc(collectionRef, object.title.toLowerCase());
+        batch.set(docRef, object);
+    })
+
+    await batch.commit();
+    console.log('done');
 }
 
 //async function that receives user auth object and store the data inside of firestore

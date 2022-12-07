@@ -21,3 +21,8 @@ export type Product = {
 export type CartItemType = Product & {
     quantity: number;
 }
+
+export type ShopDataCollection = {
+    title: string;
+    item: Product [];
+}
