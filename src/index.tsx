@@ -32,12 +32,8 @@ const router = createBrowserRouter([
         element: <App/>,
       },
       {
-        path: "shop",
+        path: "shop/",
         element: <CategoryProvider><Shop/></CategoryProvider>,
-      },
-      {
-        path: "shop/:category",
-        element: <Category/>,
       },
       {
         path: "login",
@@ -46,7 +42,11 @@ const router = createBrowserRouter([
       {
         path: "checkout",
         element: <Checkout/>
-      }
+      },
+      {
+        path: "/shop/:category",
+        element: <CategoryProvider><Category/></CategoryProvider>
+      },
     ]
   },
 

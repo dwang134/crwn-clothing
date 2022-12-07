@@ -9,12 +9,11 @@ import './Category.scss';
 const Category = () => {
   const { category } = useParams();
   const { categoriesMap } = useCategoryContext();
-  const [products, setProducts] = useState(category ? categoriesMap[category] : []);
+  const [products, setProducts] = useState(category? categoriesMap[category]: []);
 
   useEffect(() => {
     if (category) setProducts(categoriesMap[category]);
   }, [category, categoriesMap]);
-
 
   if (!category){
     return <></>;
