@@ -5,7 +5,7 @@ import { useCartContext } from "../../contexts/cartContext";
 import './Checkout.scss';
 
 const Checkout: React.FC = () => {
-  const { cartItems, cartCount, setCartCount, addItemToCart,cartTotal, setCartTotal } = useCartContext();
+  const { cartItems, cartCount,  addItemToCart,cartTotal } = useCartContext();
 
   console.log(cartItems);
 

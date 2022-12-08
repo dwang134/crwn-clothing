@@ -11,7 +11,7 @@ import { UserContext } from '../../contexts/userContext';
 const Navbar:React.FC = () => {
 
   const {currentUser} = useContext(UserContext);
-  const {isOpen, setIsOpen} = useCartContext();
+  const {isOpen} = useCartContext();
 
   console.log('CURRENT USER: ', currentUser);
 
