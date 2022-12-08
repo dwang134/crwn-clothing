@@ -71,12 +71,12 @@ export const createUserDocumentFromAuth = async (userAuth: FirebaseUser, additio
 
     //arguemnts: (database, collection , unique identifier)
     const userDocRef = doc(db, 'users', userAuth.uid);
-    console.log(userDocRef);
+    // console.log(userDocRef);
 
     //converts the doc object into a special object that gives us more methods such as exists to reference to the object 
     const userSnapshot = await getDoc(userDocRef);
     //check if document exists
-    console.log(userSnapshot.exists()); 
+    // console.log(userSnapshot.exists()); 
 
     //check if userData exists
     if(!userSnapshot.exists()){
