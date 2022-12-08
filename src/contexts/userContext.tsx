@@ -16,6 +16,10 @@ export const USER_ACTION_TYPES= {
     SET_CURRENT_USER: 'SET_CURRENT_USER'
 }
 
+const INITIAL_STATE = {
+    currentUser: null
+}
+
 const userReducer = (state: any, action: any) => {
 
     console.log('dispatched');
@@ -33,9 +37,6 @@ const userReducer = (state: any, action: any) => {
     }
 }
 
-const INITIAL_STATE= {
-    currentUser: null
-}
 
 //the actual functional component
 export const UserProvider:React.FC<Props> = ({children}) => {
@@ -44,22 +45,23 @@ export const UserProvider:React.FC<Props> = ({children}) => {
 
     console.log(currentUser);
 
+    useEffect(()=> {
+        const unsubscribe= onAuthStateChangedListener((user: any)=> {
+            if(user){
+                createUserDocumentFromAuth(user);
+            }
+            setCurrentUser(user);
+        });
+ 
+        return unsubscribe;
+     }, [])
+ 
+
     const setCurrentUser= (user: any) => {
         dispatch({type: USER_ACTION_TYPES.SET_CURRENT_USER, payload: user});
     }
 
     const value = {currentUser, setCurrentUser};
-
-    useEffect(()=> {
-       const unsubscribe= onAuthStateChangedListener((user: any)=> {
-           if(user){
-               createUserDocumentFromAuth(user);
-           }
-           setCurrentUser(user);
-       });
-
-       return unsubscribe;
-    }, [])
 
     
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>

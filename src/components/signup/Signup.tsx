@@ -3,7 +3,6 @@ import {Field} from '../../../types/Types'
 import {createAuthUserFromEmailPassword, createUserDocumentFromAuth} from '../../utils/firebase'
 import Button from '../button/Button'
 import FormInput from '../input/FormInput'
-import {UserContext} from '../../contexts/userContext'
 
 const defaultFields:Field = {
   displayName: '',

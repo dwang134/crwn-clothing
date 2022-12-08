@@ -1,7 +1,7 @@
 import {Outlet, Link} from 'react-router-dom';
 import {ReactComponent as CrwnLogo} from '../../assets/crown.svg'
 import './Navbar.scss'
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 import {signOutUser} from '../../utils/firebase'
 import CartIcon from '../cartIcon/CartIcon';
 import Dropdown from '../cart-dropdown/Dropdown';
@@ -13,6 +13,12 @@ const Navbar:React.FC = () => {
   const {currentUser} = useContext(UserContext);
   const {isOpen, setIsOpen} = useCartContext();
 
+  console.log('CURRENT USER: ', currentUser);
+
+  useEffect(()=> {
+    
+  }, [currentUser])
+
   return (
     <>
       <div className="navigation">
@@ -22,7 +28,7 @@ const Navbar:React.FC = () => {
         <div className="nav-links-container">
           <Link className= 'nav-link' to='/shop'>SHOP</Link>
           {currentUser ? (
-            <span className= 'nav-link' onClick= {()=> signOutUser()}>SIGN OUT</span>
+            <span className= 'nav-link' onClick= {signOutUser}>SIGN OUT</span>
           ): (
             <Link className= 'nav-link' to='/login'>SIGN IN</Link>
           )}
