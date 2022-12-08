@@ -1,9 +1,10 @@
 import React, { useState, createContext, useContext, useEffect, useReducer } from "react";
 import { CartItemType, Item, Product } from "../../types/Types";
+import {createAction} from '../utils/reducer/reducer'
 
 type CartContextObject = {
   isOpen: boolean;
-  setIsOpen: (opened: boolean) => void;
+  setCartOpen: (opened: boolean) => void;
   cartCount: number;
   // setCartCount: (num: number) => void;
   cartItems: CartItemType[];
@@ -16,7 +17,7 @@ type CartContextObject = {
 
 const CartContext = createContext<CartContextObject>({
   isOpen: false,
-  setIsOpen: () => {},
+  setCartOpen: () => {},
   cartCount: 0,
   cartItems: [],
   addItemToCart: () => {},
@@ -40,15 +41,26 @@ const INITIAL_STATE = {
   cartTotal: 0
 }
 
+const CART_ACTION_TYPES = {
+  SET_IS_CART_OPEN: 'SET_IS_CART_OPEN',
+  SET_CART_ITEMS: 'SET_CART_ITEMS',
+}
+
 const cartReducer = (state: any, action: any)=> {
   const {type, payload} = action;
 
   switch(type){
-    case 'SET_CART_ITEMS':
+    case CART_ACTION_TYPES.SET_CART_ITEMS:
       return {
         ...state,
         ...payload
-      }
+    }
+    case CART_ACTION_TYPES.SET_IS_CART_OPEN:
+      return {
+          ...state,
+          isOpen: payload,
+    }
+   
   }
 
   switch(type){
@@ -58,29 +70,8 @@ const cartReducer = (state: any, action: any)=> {
 }
 
 export const CartContextProvider: React.FC<Props> = ({ children }) => {
-  // const [isOpen, setIsOpen] = useState(false);
-  // const [cartCount, setCartCount] = useState(0);
-  // const [cartItems, setCartItems] = useState<CartItemType[]>([]);
-  // const [cartTotal, setCartTotal] = useState(0);
 
-  // useEffect(() => {
-  //   const newCartCount = cartItems.reduce(
-  //     (carTotal, cartItem) => carTotal + cartItem.quantity,
-  //     0
-  //   );
-  //   setCartCount(newCartCount);
-  // }, [cartItems]);
-
-  // useEffect(() => {
-  //   const newCartTotal = cartItems.reduce(
-  //     (carTotal, cartItem) => carTotal + cartItem.price,
-  //     0
-  //   );
-  //   setCartTotal(newCartTotal);
-  // }, [cartItems]);
-  const [isOpen, setIsOpen] = useState(false);
-  const [{cartCount, cartItems, cartTotal}, dispatch] = useReducer(cartReducer, INITIAL_STATE);
-
+  const [{isOpen, cartCount, cartItems, cartTotal}, dispatch] = useReducer(cartReducer, INITIAL_STATE);
 
   const updateCartItemsReducer = (newCartItems: CartItemType []) => {
 
@@ -94,7 +85,8 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
       0
     );
 
-    dispatch({type: 'SET_CART_ITEMS', payload: {cartItems: newCartItems, cartTotal: newCartTotal, cartCount: newCartCount}})
+    
+    dispatch(createAction(CART_ACTION_TYPES.SET_CART_ITEMS, {cartItems: newCartItems, cartTotal: newCartTotal, cartCount: newCartCount}));
 
   }
 
@@ -114,6 +106,10 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
   const removeItemFromCheckout = (productToRemove: Product) => {
     const newCartItems = clearItem(cartItems, productToRemove);
     updateCartItemsReducer(newCartItems);
+  }
+
+  const setCartOpen = (cartOpen: boolean)=> {
+    dispatch(createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, cartOpen))
   }
 
   
@@ -169,7 +165,7 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
 
   const value = {
     isOpen,
-    setIsOpen,
+    setCartOpen,
     cartCount,
     cartItems,
     addItemToCart,

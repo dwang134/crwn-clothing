@@ -4,10 +4,10 @@ import './CartIcon.scss';
 
 const CartIcon = () => {
 
-    const {cartCount, isOpen, setIsOpen} = useCartContext();
+    const {cartCount, isOpen, setCartOpen} = useCartContext();
 
     const toggleCartOpen = () => {
-        setIsOpen(!isOpen);
+        setCartOpen(!isOpen);
     }
 
   return (
