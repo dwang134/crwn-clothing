@@ -28,3 +28,8 @@ export type ShopDataCollection = {
 }
 
 export type Categories = Product;
+
+export type Category = {
+    title: string
+    items: Product [],
+} 
