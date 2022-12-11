@@ -3,20 +3,20 @@ import { useCategoryContext } from '../../contexts/categoryContext'
 import './Shop.scss';
 import ProductCategory from '../../components/productCategory/productCategory';
 import { getCategoriesAndDocuments } from '../../utils/firebase';
-import { setCategoriesMap } from '../../store/categories/categoryAction';
+import { setCategories } from '../../store/categories/categoryAction';
 import {useDispatch, useSelector} from 'react-redux'
 import { AppDispatch } from '../../store/store';
 import { selectCategoriesMap } from '../../store/categories/categorySelector';
 
 const Shop:React.FC = () => {
-
+ 
   const dispatch = useDispatch<AppDispatch>();
   const categoriesMap = useSelector(selectCategoriesMap);
 
   useEffect(()=> {
     const getCategoriesMap = async () => {
-        const categoryMap = await getCategoriesAndDocuments();
-        dispatch(setCategoriesMap(categoryMap))
+        const categoriesArray = await getCategoriesAndDocuments();
+        dispatch(setCategories(categoriesArray));
     };
 
     getCategoriesMap();
