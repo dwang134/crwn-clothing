@@ -16,6 +16,8 @@ import { CategoryProvider } from './contexts/categoryContext';
 import { CartContextProvider } from './contexts/cartContext';
 import Checkout from './routes/checkout/Checkout';
 import Category from './routes/category/Category';
+import {Provider} from 'react-redux';
+import { store } from './store/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -55,9 +57,9 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <UserProvider>
+    <Provider store= {store}>
       <RouterProvider router={router}/>
-    </UserProvider>
+    </Provider>
   </React.StrictMode>
 );
 

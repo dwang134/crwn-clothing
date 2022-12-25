@@ -1,15 +1,26 @@
-import React from 'react'
-import {Product} from '../../../types/Types'
+import React, { useEffect } from 'react'
 import { useCategoryContext } from '../../contexts/categoryContext'
 import './Shop.scss';
-import { Routes, Route } from 'react-router-dom';
 import ProductCategory from '../../components/productCategory/productCategory';
-import CategoryPreview from '../categories-preview/CategoryPreview';
-import Category from '../category/Category';
- 
-const Shop:React.FC = () => {
+import { getCategoriesAndDocuments } from '../../utils/firebase';
+import { setCategories } from '../../store/categories/categoryAction';
+import {useDispatch, useSelector} from 'react-redux'
+import { AppDispatch } from '../../store/store';
+import { selectCategoriesMap } from '../../store/categories/categorySelector';
 
-  const {categoriesMap} = useCategoryContext();
+const Shop:React.FC = () => {
+ 
+  const dispatch = useDispatch<AppDispatch>();
+  const categoriesMap = useSelector(selectCategoriesMap);
+
+  useEffect(()=> {
+    const getCategoriesMap = async () => {
+        const categoriesArray = await getCategoriesAndDocuments();
+        dispatch(setCategories(categoriesArray));
+    };
+
+    getCategoriesMap();
+  }, [])
 
   return (
     <>

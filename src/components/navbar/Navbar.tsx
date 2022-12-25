@@ -7,17 +7,18 @@ import CartIcon from '../cartIcon/CartIcon';
 import Dropdown from '../cart-dropdown/Dropdown';
 import { useCartContext } from '../../contexts/cartContext';
 import { UserContext } from '../../contexts/userContext';
+import {useSelector} from 'react-redux';
+import { RootState } from '../../store/root-reducer';
+import { selectCurrentUser } from '../../store/user/userSelector';
 
 const Navbar:React.FC = () => {
 
-  const {currentUser} = useContext(UserContext);
+  const currentUser = useSelector(selectCurrentUser);
+
   const {isOpen} = useCartContext();
 
   console.log('CURRENT USER: ', currentUser);
 
-  useEffect(()=> {
-    
-  }, [currentUser])
 
   return (
     <>
