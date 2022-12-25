@@ -34,11 +34,8 @@ const Signin = () => {
     event.preventDefault();
 
     try {
-      const res = await signInAuthUserWithEmailAndPassword(email, password);
-
-      if (res){
-        resetFormFields();
-      }
+     await signInAuthUserWithEmailAndPassword(email, password);
+     resetFormFields();
     } catch (error) {
       console.log('user sign in failed', error);
     }
